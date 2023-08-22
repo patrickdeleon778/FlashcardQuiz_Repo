@@ -1,15 +1,16 @@
 import React from 'react'
 import useCards from './hooks/useCards'
-import { Box, Text } from '@chakra-ui/react';
+import { Box, Center, Text } from '@chakra-ui/react';
+import CardList from './components/CardList';
 
 const App = () => {
 
   const {data, error} = useCards();
 
   return (
-    <div>
-      
-    </div>
+    <Box>
+      <CardList/>
+    </Box>
   )
 }
 
