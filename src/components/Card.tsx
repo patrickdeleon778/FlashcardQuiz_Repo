@@ -9,7 +9,7 @@ const Card = () => {
 
   return (
     <>
-      
+      {data.map((card) => <GridItem>{card.question}</GridItem>)}
     </>
   )
 }
