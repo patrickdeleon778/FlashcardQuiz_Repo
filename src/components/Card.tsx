@@ -1,17 +1,18 @@
-import React from 'react'
-import useCards from '../hooks/useCards';
-import { GridItem } from '@chakra-ui/react';
-import CardProps from '../models/CardProps';
+import React from "react";
+import useCards from "../hooks/useCards";
+import { GridItem } from "@chakra-ui/react";
+import CardProps from "../models/CardProps";
 
 const Card = () => {
-
-  const {data} = useCards();
+  const { data } = useCards();
 
   return (
     <>
-      {data.map((card) => <GridItem>{card.question}</GridItem>)}
+      {data.map((card) => (
+        <GridItem>{card.question}</GridItem>
+      ))}
     </>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;
