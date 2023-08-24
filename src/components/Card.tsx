@@ -1,16 +1,34 @@
 import React from "react";
 import useCards from "../hooks/useCards";
-import { GridItem } from "@chakra-ui/react";
-import CardProps from "../models/CardProps";
+import { Box, GridItem, Text } from "@chakra-ui/react";
+import CardInfoProp from "../models/CardInfoProp";
 
-const Card = () => {
-  const { data } = useCards();
+interface CardProp {
+  singleCard: CardInfoProp;
+}
+
+const Card = ({ singleCard }: CardProp) => {
+  const { flip, setFlip } = useCards();
+  const answer = singleCard.correct_answer;
+  const choices = [...singleCard.incorrect_answers, answer];
 
   return (
     <>
-      {data.map((card) => (
-        <GridItem>{card.question}</GridItem>
-      ))}
+      <GridItem onClick={() => setFlip(!flip)} w="100%" h="200">
+        {/* {flip ? singleCard.question : singleCard.correct_answer} */}
+        <Box className="frontCard">
+          <Text>{singleCard.question}</Text>
+          <Box>
+            {choices.map((choice, index) => (
+              <Box key={index} mb={2}>
+                {choice}
+              </Box>
+            ))}
+          </Box>
+        </Box>
+
+        <Box className="backCard">{singleCard.correct_answer}</Box>
+      </GridItem>
     </>
   );
 };

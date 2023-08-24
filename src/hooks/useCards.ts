@@ -24,7 +24,7 @@ const useCards = () => {
 
     console.log(data);
 
-  return { data, error, flip };
+  return { data, error, flip, setFlip};
 }
 
 export default useCards

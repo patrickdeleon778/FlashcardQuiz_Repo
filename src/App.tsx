@@ -9,7 +9,7 @@ const App = () => {
 
   return (
     <Box>
-      <CardList/>
+      <CardList cardList={data}/>
     </Box>
   )
 }

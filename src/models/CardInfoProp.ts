@@ -5,4 +5,6 @@ export default interface CardInfoProp {
     incorrect_answers: string[];
     question: string;
     type: string;
+    id: number;
+    name: string;
 }
