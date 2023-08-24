@@ -2,10 +2,11 @@ import React from 'react'
 import useCards from './hooks/useCards'
 import { Box, Center, Text } from '@chakra-ui/react';
 import CardList from './components/CardList';
+import './App.css';
 
 const App = () => {
 
-  const {data, error} = useCards();
+  const {data} = useCards();
 
   return (
     <Box>
