@@ -13,12 +13,7 @@ const CardList = ( {cardList}: CardListProps ) => {
 
   return (
     <Grid
-      templateColumns={[
-        "1fr",
-        "repeat(2, 1fr)",
-        "repeat(3, 1fr)",
-        "repeat(5, 1fr)",
-      ]}
+      templateColumns="repeat(auto-fit, minmax(355px, 1fr))"
       gap={6}
     >
       {/* <GridItem w='100%' h='200' bg='blue.500' />

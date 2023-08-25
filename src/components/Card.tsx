@@ -12,33 +12,55 @@ const Card = ({ singleCard }: CardProp) => {
   const answer = singleCard.correct_answer;
   const choices = [...singleCard.incorrect_answers, answer];
 
-  function decodeString(str:string) {
-    const textArea = document.createElement('textarea');
-    textArea.innerHTML = str
+  function decodeString(str: string) {
+    const textArea = document.createElement("textarea");
+    textArea.innerHTML = str;
     return textArea.value;
   }
 
   return (
     <>
-      <GridItem className={!flip ? '' : 'backCard'} onClick={() => setFlip(!flip)} w="100%" h="200">
+      <GridItem
+        className={`mainCard ${!flip ? "" : "backCard"}`}
+        onClick={() => setFlip(!flip)}
+        w="355px"
+        h="250px"
+      >
         {!flip ? (
-          <>
-            <Box className="frontCard">
-              <Text fontSize={{ base: "sm", md: "md" }}>{decodeString(singleCard.question)}</Text>
-              <Box>
+          <Box maxWidth='80%'>
+            <Box className="frontCard p4Font">
+              <Text
+                p={4}
+                noOfLines={5}
+                overflow="hidden"
+                overflowY="auto"
+                css={{
+                  "&::-webkit-scrollbar": {
+                    display: "none",
+                  },
+                }}
+              >
+                {decodeString(singleCard.question)}
+              </Text>
+              <Box pl={7}>
                 {choices.map((choice, index) => (
-                  <Box key={index} mb={2}>
-                    {decodeString(choice)}
+                  <Box key={index} mb={"0.5"}>
+                    <Text
+                      noOfLines={2}
+                      overflow="hidden"
+                    >
+                      {decodeString(choice)}
+                    </Text>
                   </Box>
                 ))}
               </Box>
             </Box>
-          </>
+          </Box>
         ) : (
-          <Box>{decodeString(singleCard.correct_answer)}</Box>
+          <Box className="p4Font" pr='60px'>
+            {decodeString(singleCard.correct_answer)}
+          </Box>
         )}
-
-        {/* <Box className="backCard">{singleCard.correct_answer}</Box> */}
       </GridItem>
     </>
   );

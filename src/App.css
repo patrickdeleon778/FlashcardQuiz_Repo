@@ -1,3 +1,21 @@
+.mainCard {
+    background-image: url(/src/assets/images/persona\ 4\ tv.png);
+    background-size: 355px 250px;;
+    background-repeat: no-repeat;
+    background-position: center center;
+    /* border-radius: 10px; */
+}
+
+/* .frontCard {
+
+} */
+.p4Font {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+}
+
 .backCard {
     display: flex;
     justify-content: center;

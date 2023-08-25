@@ -9,7 +9,7 @@ const App = () => {
   const {data} = useCards();
 
   return (
-    <Box>
+    <Box margin={10}>
       <CardList cardList={data}/>
     </Box>
   )
