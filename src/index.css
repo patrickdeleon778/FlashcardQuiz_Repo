@@ -1,0 +1,5 @@
+body {
+    background-image: url('/src/assets/images/persona4-background.jpeg');
+    background-repeat: repeat;
+    background-size: cover;
+}

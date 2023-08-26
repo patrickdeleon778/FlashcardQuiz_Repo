@@ -21,16 +21,17 @@ const Card = ({ singleCard }: CardProp) => {
   return (
     <>
       <GridItem
-        className={`mainCard ${!flip ? "" : "backCard"}`}
+        className={`mainCard bounceIn ${!flip ? "" : "backCard"}`}
         onClick={() => setFlip(!flip)}
         w="355px"
         h="250px"
       >
         {!flip ? (
-          <Box maxWidth='80%'>
+          <Box className="oneCard"maxWidth='80%'>
             <Box className="frontCard p4Font">
               <Text
-                p={4}
+                p={6}
+                pb={2}
                 noOfLines={5}
                 overflow="hidden"
                 overflowY="auto"
@@ -57,7 +58,7 @@ const Card = ({ singleCard }: CardProp) => {
             </Box>
           </Box>
         ) : (
-          <Box className="p4Font" pr='60px'>
+          <Box className="p4Font correctText" pl='65px'>
             {decodeString(singleCard.correct_answer)}
           </Box>
         )}

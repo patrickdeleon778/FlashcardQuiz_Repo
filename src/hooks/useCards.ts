@@ -10,6 +10,7 @@ const useCards = () => {
     const [data, setData] = useState<CardInfoProp[]>([]);
     const [error, setError] = useState('');
     const [flip, setFlip] = useState(false);
+    const [play, setPlay] = useState(false);
 
     useEffect(() => {
         apiClient.get('')
@@ -24,7 +25,7 @@ const useCards = () => {
 
     console.log(data);
 
-  return { data, error, flip, setFlip};
+  return { data, error, flip, play, setFlip, setPlay};
 }
 
 export default useCards

@@ -1,10 +1,25 @@
+.background {
+    background-image: url('/src/assets/images/persona4-background.jpeg');
+    background-repeat: repeat;
+    background-size: cover;
+}
+
+
 .mainCard {
     background-image: url(/src/assets/images/persona\ 4\ tv.png);
     background-size: 355px 250px;;
     background-repeat: no-repeat;
     background-position: center center;
     /* border-radius: 10px; */
+    perspective: 1000px;
+    transition: transform 0.1s;
+    transform-style: preserve-3d;
 }
+
+/* .oneCard {
+    transition: transform 0.8s;
+    transform-style: preserve-3d
+} */
 
 /* .frontCard {
 
@@ -20,4 +35,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transform: rotateY(180deg);
+}
+
+.correctText {
+    transform: rotateY(180deg);
 }

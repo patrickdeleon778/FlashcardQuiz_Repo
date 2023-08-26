@@ -1,18 +1,26 @@
-import React from 'react'
-import useCards from './hooks/useCards'
-import { Box, Center, Text } from '@chakra-ui/react';
-import CardList from './components/CardList';
-import './App.css';
+import React from "react";
+import useCards from "./hooks/useCards";
+import { Box, Center, Text } from "@chakra-ui/react";
+import CardList from "./components/CardList";
+import "./App.css";
+import BGM from "./components/audioComponents/BGM";
+import Play from "./components/Play";
 
 const App = () => {
-
-  const {data} = useCards();
+  const { data, play } = useCards();
 
   return (
-    <Box margin={10}>
-      <CardList cardList={data}/>
-    </Box>
-  )
-}
+    <>
+      {play ? (
+          <Play/>
+      ) : (
+        <Box margin={10}>
+          <CardList cardList={data} />
+          <BGM />
+        </Box>
+      )}
+    </>
+  );
+};
 
-export default App
+export default App;
