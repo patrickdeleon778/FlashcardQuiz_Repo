@@ -44,8 +44,8 @@ const Card = ({ singleCard }: CardProp) => {
                 {decodeString(singleCard.question)}
               </Text>
               <Box pl={7}>
-                {choices.map((choice, index) => (
-                  <Box key={index} mb={"0.5"}>
+                {choices.map((choice) => (
+                  <Box key={choice} mb={"0.5"}>
                     <Text
                       noOfLines={2}
                       overflow="hidden"
