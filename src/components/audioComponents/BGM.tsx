@@ -1,10 +1,13 @@
+import React from 'react'
 
-const BGM = () => {
+const Bgm = () => {
   return (
-    <audio autoPlay loop>
-        <source src="/src/components/audioComponents/BGM.tsx" type="audio/mpeg" />
-    </audio>
+    <>
+      <audio autoPlay loop>
+        <source src="/src/assets/audio/Persona 4 Heartbeat Heartbreak.mp3" type="audio/mpeg" />
+      </audio>
+    </>
   )
 }
 
-export default BGM
+export default Bgm

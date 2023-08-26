@@ -1,22 +1,33 @@
 import React from "react";
 import useCards from "./hooks/useCards";
-import { Box, Center, Text } from "@chakra-ui/react";
+import { Box, Button, Center, Text } from "@chakra-ui/react";
 import CardList from "./components/CardList";
 import "./App.css";
-import BGM from "./components/audioComponents/BGM";
 import Play from "./components/Play";
+import Bgm from "./components/audioComponents/BGM";
 
 const App = () => {
-  const { data, play } = useCards();
+  const { data, play, setPlay } = useCards();
+
+  const handlePlay = () => {
+    setPlay(true);
+}
 
   return (
     <>
-      {play ? (
-          <Play/>
+      {!play ? (
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          mt={600}
+        >
+          <Button onClick={handlePlay}>Play</Button>
+        </Box>
       ) : (
         <Box margin={10}>
           <CardList cardList={data} />
-          <BGM />
+          <Bgm/>
         </Box>
       )}
     </>
