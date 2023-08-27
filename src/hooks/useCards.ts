@@ -18,6 +18,7 @@ const useCards = () => {
   const [error, setError] = useState("");
   const [flip, setFlip] = useState(false);
   const [play, setPlay] = useState(false);
+  const [selectCat, setSelectCat] = useState(false);
 
   const catergoryRef = useRef<HTMLSelectElement>(null);
   const numberOfCardsRef = useRef<HTMLInputElement>(null);
@@ -48,6 +49,8 @@ const useCards = () => {
       .catch((error) => {
         setError(error.message);
       });
+
+      setSelectCat(true);
   }
 
   // const fetchData = () => {
@@ -112,9 +115,11 @@ const useCards = () => {
     error,
     flip,
     play,
+    selectCat,
     categories,
     setFlip,
     setPlay,
+    setSelectCat,
     catergoryRef,
     numberOfCardsRef,
     handleSubmit,

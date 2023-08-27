@@ -4,6 +4,10 @@
     background-size: cover;
 }
 
+@font-face {
+    font-family: 'P4Font';
+    src: url(/src/assets/fonts/Fontsona4Golden.ttf);
+}
 
 .mainCard {
     background-image: url(/src/assets/images/persona\ 4\ tv.png);
@@ -25,7 +29,7 @@
 
 } */
 .p4Font {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'P4Font';
     font-style: normal;
     font-weight: 700;
     font-size: 15px;
@@ -40,4 +44,29 @@
 
 .correctText {
     transform: rotateY(180deg);
+}
+
+.formBackground {
+    background-image: url('/src/assets/images/dialogue\ box.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center; 
+    height: 250px;
+    width: 1100px;
+    display: flex;
+    align-items: center;
+    padding: 20px; 
+}
+
+.formBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10rem;
+}
+
+.playBtn {
+    width: 100vw;
+    transform: rotate(-10deg);
 }

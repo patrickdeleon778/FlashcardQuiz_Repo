@@ -14,8 +14,14 @@ import {
 // import React, { useRef } from "react";
 import useCards from "../hooks/useCards";
 import { useEffect } from "react";
+import CardInfoProp from "../models/CardInfoProp";
 
-const SelectAmount = () => {
+interface CardListProps {
+  selectList: CardInfoProp[]
+}
+
+
+const SelectAmount = (  ) => {
   const { categories, catergoryRef, numberOfCardsRef, handleSubmit, data,  } = useCards();
 
   console.log("data from selectAmount component:", data);
