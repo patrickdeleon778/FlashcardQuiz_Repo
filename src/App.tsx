@@ -1,22 +1,41 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useCards from "./hooks/useCards";
-import { Box, Button, Center, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Center,
+  FormControl,
+  FormLabel,
+  NumberDecrementStepper,
+  NumberIncrementStepper,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  Select,
+  Text,
+} from "@chakra-ui/react";
 import CardList from "./components/CardList";
 import "./App.css";
-import Bgm from "./components/audioComponents/BGM";
+// import Bgm from "./components/audioComponents/BGM";
 import SelectAmount from "./components/SelectAmount";
 
 const App = () => {
-  const { data, play, setPlay } = useCards();
+  const {
+    data,
+    play,
+    setPlay,
+    categories,
+    catergoryRef,
+    numberOfCardsRef,
+    handleSubmit,
+  } = useCards();
 
-  console.log("data:", data);
-  console.log("play:", play);
+  console.log("data from app.tsx:", data);
 
   const handlePlay = () => {
     setPlay(true);
-}
+  };
 
-  console.log("After clicking Play, play:", play);
   return (
     <>
       {!play ? (
@@ -26,12 +45,67 @@ const App = () => {
           alignItems="center"
           mt={600}
         >
-          <SelectAmount/>
+          {/* <SelectAmount/> */}
+          <form onSubmit={handleSubmit}>
+            <FormControl>
+              <FormLabel htmlFor="category">Catergory</FormLabel>
+              <Select id="category" ref={catergoryRef}>
+                {categories.map((category) => (
+                  <option value={category.id} key={category.id}>
+                    {category.name}
+                  </option>
+                ))}
+              </Select>
+            </FormControl>
+
+            <FormControl>
+              <FormLabel>Cards. Pick em</FormLabel>
+              <NumberInput min={1} max={25}>
+                <NumberInputField ref={numberOfCardsRef} />
+                <NumberInputStepper>
+                  <NumberIncrementStepper />
+                  <NumberDecrementStepper />
+                </NumberInputStepper>
+              </NumberInput>
+            </FormControl>
+
+            <FormControl>
+              <Button type="submit">Create em Cards</Button>
+            </FormControl>
+          </form>
           <Button onClick={handlePlay}>Play</Button>
         </Box>
       ) : (
         <Box margin={10}>
           {/* <SelectAmount/> */}
+
+          {/* <form onSubmit={handleSubmit}>
+            <FormControl>
+              <FormLabel htmlFor="category">Catergory</FormLabel>
+              <Select id="category" ref={catergoryRef}>
+                {categories.map((category) => (
+                  <option value={category.id} key={category.id}>
+                    {category.name}
+                  </option>
+                ))}
+              </Select>
+            </FormControl>
+
+            <FormControl>
+              <FormLabel>Cards. Pick em</FormLabel>
+              <NumberInput min={1} max={25}>
+                <NumberInputField ref={numberOfCardsRef} />
+                <NumberInputStepper>
+                  <NumberIncrementStepper />
+                  <NumberDecrementStepper />
+                </NumberInputStepper>
+              </NumberInput>
+            </FormControl>
+
+            <FormControl>
+              <Button type="submit">Create em Cards</Button>
+            </FormControl>
+          </form> */}
           <CardList cardList={data} />
           {/* <Bgm/> */}
         </Box>

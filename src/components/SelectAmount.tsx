@@ -16,7 +16,9 @@ import useCards from "../hooks/useCards";
 import { useEffect } from "react";
 
 const SelectAmount = () => {
-  const { categories, catergoryRef, numberOfCardsRef, handleSubmit } = useCards();
+  const { categories, catergoryRef, numberOfCardsRef, handleSubmit, data,  } = useCards();
+
+  console.log("data from selectAmount component:", data);
 
   useEffect(() => {
     handleSubmit

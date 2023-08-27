@@ -9,12 +9,11 @@ interface CardListProps {
 }
 
 const CardList = ( {cardList}: CardListProps ) => {
-  const { data } = useCards();
+  const { data, handleSubmit } = useCards();
 
   useEffect(() => {
-    // This effect runs whenever the data changes
-    console.log("cardList:", cardList);
-  }, [cardList]);
+    console.log("cardList.tsx:", cardList);
+  }, [handleSubmit]);
 
   return (
     <Grid

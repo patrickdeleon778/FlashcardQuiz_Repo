@@ -50,6 +50,32 @@ const useCards = () => {
       });
   }
 
+  // const fetchData = () => {
+
+  //   const amount = numberOfCardsRef.current?.value;
+  //   const category = catergoryRef.current?.value;
+
+  //   console.log("Submitting form with amount:", amount);
+  //   console.log("Category selected:", category);
+
+  //   apiClient
+  //     .get('', {
+  //       params: {
+  //         amount: amount,
+  //         category: category,
+  //       },
+  //     })
+  //     .then((response) => {
+  //       const responseData: Response = response.data;
+  //       // console.log(responseData);
+  //       setData(responseData.results);
+  //       console.log(responseData.results);
+  //     })
+  //     .catch((error) => {
+  //       setError(error.message);
+  //     });
+  // }
+
   useEffect(() => {
     // apiClient.get('')
     //     .then(response => {
@@ -92,6 +118,7 @@ const useCards = () => {
     catergoryRef,
     numberOfCardsRef,
     handleSubmit,
+    // fetchData
   };
 };
 
