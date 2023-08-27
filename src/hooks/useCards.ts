@@ -21,6 +21,7 @@ const useCards = () => {
 
   const catergoryRef = useRef<HTMLSelectElement>(null);
   const numberOfCardsRef = useRef<HTMLInputElement>(null);
+  
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -32,7 +33,7 @@ const useCards = () => {
     console.log("Category selected:", category);
 
     apiClient
-      .get("", {
+      .get('', {
         params: {
           amount: amount,
           category: category,
@@ -50,15 +51,16 @@ const useCards = () => {
   }
 
   useEffect(() => {
-    apiClient.get('')
-        .then(response => {
-            const responseData: Response = response.data;
-            setData(responseData.results);
-            console.log(responseData.results);
-        })
-        .catch((error) => {
-            setError(error.message);
-        });
+    // apiClient.get('')
+    //     .then(response => {
+    //         const responseData: Response = response.data;
+    //         setData(responseData.results);
+    //         console.log(responseData.results);
+    //     })
+    //     .catch((error) => {
+    //         setError(error.message);
+    //     });
+
   }, []);
 
   useEffect(() => {

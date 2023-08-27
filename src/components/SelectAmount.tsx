@@ -13,9 +13,14 @@ import {
 } from "@chakra-ui/react";
 // import React, { useRef } from "react";
 import useCards from "../hooks/useCards";
+import { useEffect } from "react";
 
 const SelectAmount = () => {
   const { categories, catergoryRef, numberOfCardsRef, handleSubmit } = useCards();
+
+  useEffect(() => {
+    handleSubmit
+  }, [handleSubmit]);
 
   return (
     <form onSubmit={handleSubmit}>

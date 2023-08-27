@@ -1,5 +1,5 @@
 import { Grid, GridItem } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import Card from "./Card";
 import useCards from "../hooks/useCards";
 import CardInfoProp from "../models/CardInfoProp";
@@ -10,6 +10,11 @@ interface CardListProps {
 
 const CardList = ( {cardList}: CardListProps ) => {
   const { data } = useCards();
+
+  useEffect(() => {
+    // This effect runs whenever the data changes
+    console.log("cardList:", cardList);
+  }, [cardList]);
 
   return (
     <Grid

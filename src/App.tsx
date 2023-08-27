@@ -9,10 +9,14 @@ import SelectAmount from "./components/SelectAmount";
 const App = () => {
   const { data, play, setPlay } = useCards();
 
+  console.log("data:", data);
+  console.log("play:", play);
+
   const handlePlay = () => {
     setPlay(true);
 }
 
+  console.log("After clicking Play, play:", play);
   return (
     <>
       {!play ? (
