@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import useCards from "./hooks/useCards";
 import {
   Box,
@@ -18,7 +18,11 @@ import {
 import CardList from "./components/CardList";
 import "./App.css";
 import Bgm from "./components/audioComponents/BGM";
-import SelectAmount from "./components/SelectAmount";
+// import SelectAmount from "./components/SelectAmount";
+import GenButton from "./components/audioComponents/GenButton";
+import YourAffection from "./components/audioComponents/YourAffection";
+
+import hoverSound from '../src/assets/audio/optionHover.mp3';
 
 const App = () => {
   const {
@@ -31,19 +35,55 @@ const App = () => {
     catergoryRef,
     numberOfCardsRef,
     handleSubmit,
+    genAudio,
+    yourAffection,
+    setYourAffection
   } = useCards();
 
   console.log("data from app.tsx:", data);
 
   const handlePlay = () => {
     setPlay(true);
+    setYourAffection(true);
   };
 
+  
+  const hoverAudioRef = useRef<HTMLAudioElement | null>(null);
+
+  const [buttonClassName, setButtonClassName] = useState('p4Font slideUp');
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setButtonClassName('p4Font pound');
+    }, 2000);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
+
+  const handleOptionHover = () => {
+    if (hoverAudioRef.current) {
+      
+      hoverAudioRef.current.play();
+    }
+  };
+
+  const handleOptionLeave = () => {
+    if (hoverAudioRef.current) {
+      hoverAudioRef.current.pause();
+      hoverAudioRef.current.currentTime = 0;
+    }
+  };
+
+  
+  
   return (
     <>
       {!play ? (
         <>
-          <Box m="" display="flex" justifyContent="center">
+          <Box display="flex" justifyContent="center">
             <Image
               src="/src/assets/images/persona4logo.gif"
               m={0}
@@ -58,8 +98,8 @@ const App = () => {
             alignItems="center"
             mt={0}
           >
-            <Button className='playBtn' onClick={handlePlay} variant='ghost' height='100px'>
-              <Image src="/src/assets/images/actuallydoneButton.png" style={{ width: "100%", height: "100%" }}/>
+            <Button className='playBtn' onClick={handlePlay} variant='ghost' height='100px' _hover={{}} _active={{}} onMouseEnter={handleOptionHover} onMouseLeave={handleOptionLeave}>
+              <Image src="/src/assets/images/actuallydoneButton.png" className='pulse' _hover={{transform: 'translateY(-2px)'}} style={{ width: "100%", height: "100%" }}/>
             </Button>
           </Box>
         </>
@@ -67,11 +107,12 @@ const App = () => {
         <>
           {!selectCat ? (
             <>
+            {yourAffection && <YourAffection/>}
               <form onSubmit={handleSubmit} className="formBox">
                 <Box className="formBackground p4Font slideRight" mb={20}>
                   <FormControl flex={1} position='relative'>
                     <FormLabel htmlFor="category" style={{ position: "absolute", top: "-70px", left: "5px" , color: '#36311e', fontSize: '25px'}}>Catergory</FormLabel>
-                    <Select id="category" ref={catergoryRef} variant='unstyled' color={"white"} width="93%" ml={20} mb={5} fontSize={25}>
+                    <Select id="category" ref={catergoryRef} variant='unstyled' color={"white"} width="93%" ml={20} mb={5} fontSize={25} onMouseEnter={handleOptionHover} onMouseLeave={handleOptionLeave} cursor='pointer'>
                       {categories.map((category) => (
                         <option value={category.id} key={category.id}>
                           {category.name}
@@ -81,28 +122,35 @@ const App = () => {
                   </FormControl>
                 </Box>
                 
-                <Box className="formBackground p4Font slideLeft">
+                <Box className="formBackground p4Font slideLeft" mb={20}>
                 <FormControl flex={1} position='relative'>
-                  <FormLabel style={{ position: "absolute", top: "-70px", left: "5px" , color: '#36311e', fontSize: '25px'}}>Cards. Pick em</FormLabel>
+                  <FormLabel style={{ position: "absolute", top: "-70px", left: "5px" , color: '#36311e', fontSize: '25px'}}>Cards</FormLabel>
                   <NumberInput defaultValue={15} min={1} max={25}>
-                    <NumberInputField ref={numberOfCardsRef} color={"white"} borderColor="#36311e" width="90%" ml={20} mb={5} fontSize={25}/>
+                    <NumberInputField ref={numberOfCardsRef} color={"white"} borderColor="#36311e" width="90%" ml={20} mb={5} fontSize={25} onMouseEnter={handleOptionHover} onMouseLeave={handleOptionLeave}/>
                     <NumberInputStepper>
-                      <NumberIncrementStepper borderColor="#36311e" color={"white"}/>
-                      <NumberDecrementStepper borderColor="#36311e" color={"white"}/>
+                      <NumberIncrementStepper borderColor="#36311e" color={"white"} mb={5} onMouseEnter={handleOptionHover} onMouseLeave={handleOptionLeave}/>
+                      <NumberDecrementStepper borderColor="#36311e" color={"white"} mb={5} onMouseEnter={handleOptionHover} onMouseLeave={handleOptionLeave}/>
                     </NumberInputStepper>
                   </NumberInput>
                 </FormControl>
                 </Box>
-
+                
+                <Box className={buttonClassName} mt={8} onMouseEnter={handleOptionHover} onMouseLeave={handleOptionLeave}>
                 <FormControl>
-                  <Button type="submit">Create em Cards</Button>
+                  <Button type="submit" fontSize={50} variant='ghost' _hover={{}} _active={{}}>Load Game</Button>
                 </FormControl>
+                </Box>
+
+                <audio ref={hoverAudioRef}>
+                  <source src={hoverSound} type="audio/mp3" />
+                </audio>
               </form>
             </>
           ) : (
             <Box margin={10}>
               <CardList cardList={data} />
               <Bgm />
+              {genAudio && <GenButton/>}
             </Box>
           )}
         </>

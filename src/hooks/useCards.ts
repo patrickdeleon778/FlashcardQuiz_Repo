@@ -19,6 +19,8 @@ const useCards = () => {
   const [flip, setFlip] = useState(false);
   const [play, setPlay] = useState(false);
   const [selectCat, setSelectCat] = useState(false);
+  const [genAudio, setGenAudio] = useState(false);
+  const [yourAffection, setYourAffection] = useState(false);
 
   const catergoryRef = useRef<HTMLSelectElement>(null);
   const numberOfCardsRef = useRef<HTMLInputElement>(null);
@@ -51,6 +53,7 @@ const useCards = () => {
       });
 
       setSelectCat(true);
+      setGenAudio(true);
   }
 
   // const fetchData = () => {
@@ -117,13 +120,16 @@ const useCards = () => {
     play,
     selectCat,
     categories,
+    genAudio,
+    setGenAudio,
     setFlip,
     setPlay,
     setSelectCat,
     catergoryRef,
     numberOfCardsRef,
     handleSubmit,
-    // fetchData
+    yourAffection,
+    setYourAffection
   };
 };
 
