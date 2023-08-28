@@ -17,7 +17,7 @@ import {
 } from "@chakra-ui/react";
 import CardList from "./components/CardList";
 import "./App.css";
-import Bgm from "./components/audioComponents/BGM";
+import Bgm from "../src/components/audioComponents/Bgm";
 // import SelectAmount from "./components/SelectAmount";
 import GenButton from "./components/audioComponents/GenButton";
 import YourAffection from "./components/audioComponents/YourAffection";
@@ -51,11 +51,12 @@ const App = () => {
   const hoverAudioRef = useRef<HTMLAudioElement | null>(null);
 
   const [buttonClassName, setButtonClassName] = useState('p4Font slideUp');
+  
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setButtonClassName('p4Font pound');
-    }, 2000);
+    }, 2100);
 
     return () => {
       clearTimeout(timeoutId);
@@ -83,10 +84,10 @@ const App = () => {
     <>
       {!play ? (
         <>
-          <Box display="flex" justifyContent="center">
+          <Box className="bounceIn" display="flex" justifyContent="center">
             <Image
               src="/src/assets/images/persona4logo.gif"
-              m={0}
+              mt={1}
               maxWidth={{ base: "100%", sm: "75%", md: "50%" }}
               objectFit="cover"
             />
@@ -96,10 +97,10 @@ const App = () => {
             display="flex"
             justifyContent="center"
             alignItems="center"
-            mt={0}
+            mt={-6}
           >
             <Button className='playBtn' onClick={handlePlay} variant='ghost' height='100px' _hover={{}} _active={{}} onMouseEnter={handleOptionHover} onMouseLeave={handleOptionLeave}>
-              <Image src="/src/assets/images/actuallydoneButton.png" className='pulse' _hover={{transform: 'translateY(-2px)'}} style={{ width: "100%", height: "100%" }}/>
+              <Image src="/src/assets/images/actuallydoneButton.png" className="pulse" _hover={{transform: 'translateY(-2px)'}} style={{ width: "100%", height: "100%" }}/>
             </Button>
           </Box>
         </>
