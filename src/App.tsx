@@ -18,11 +18,11 @@ import {
 import CardList from "./components/CardList";
 import "./App.css";
 // import Bgm from "../src/components/audioComponents/Bgm"; // THIS IS FOR THE PC
-import Bgm from "./components/audioComponents/BGM"; // THIS IS FOR THE MAC
-import GenButton from "./components/audioComponents/GenButton";
-import YourAffection from "./components/audioComponents/YourAffection";
+// import Bgm from "./components/audioComponents/BGM"; // THIS IS FOR THE MAC
+// import GenButton from "./components/audioComponents/GenButton";
+// import YourAffection from "./components/audioComponents/YourAffection";
 
-import hoverSound from "../src/assets/audio/optionHover.mp3";
+import useAudio from "./hooks/useAudio";
 
 const App = () => {
   const {
@@ -40,14 +40,15 @@ const App = () => {
     setYourAffection,
   } = useCards();
 
+  const { handleOptionHover, handleOptionLeave, handlePlayBgm, handlePlayAffect} = useAudio();
+
   console.log("data from app.tsx:", data);
 
   const handlePlay = () => {
     setPlay(true);
-    setYourAffection(true);
+    // setYourAffection(true);
+    handlePlayAffect();
   };
-
-  const hoverAudioRef = useRef<HTMLAudioElement | null>(null);
 
   const [loadButtonClassName, setloadButtonClassName] =
     useState("p4Font slideUp");
@@ -68,18 +69,18 @@ const App = () => {
     };
   }, []);
 
-  const handleOptionHover = () => {
-    if (hoverAudioRef.current) {
-      hoverAudioRef.current.play();
-    }
-  };
+  // const handleOptionHover = () => {
+  //   if (hoverAudioRef.current) {
+  //     hoverAudioRef.current.play();
+  //   }
+  // };
 
-  const handleOptionLeave = () => {
-    if (hoverAudioRef.current) {
-      hoverAudioRef.current.pause();
-      hoverAudioRef.current.currentTime = 0;
-    }
-  };
+  // const handleOptionLeave = () => {
+  //   if (hoverAudioRef.current) {
+  //     hoverAudioRef.current.pause();
+  //     hoverAudioRef.current.currentTime = 0;
+  //   }
+  // };
 
   return (
     <>
@@ -123,7 +124,7 @@ const App = () => {
         <>
           {!selectCat ? (
             <>
-              {yourAffection && <YourAffection />}
+              {/* {yourAffection && <YourAffection />} */}
               <form onSubmit={handleSubmit} className="formBox">
                 <Box className="formBackground p4Font slideRight" mb={20}>
                   <FormControl flex={1} position="relative">
@@ -157,7 +158,7 @@ const App = () => {
                           value={category.id}
                           key={category.id}
                           style={{
-                            backgroundColor: "#36311e", 
+                            backgroundColor: "#36311e",
                           }}
                           onMouseEnter={handleOptionHover}
                           onMouseLeave={handleOptionLeave}
@@ -232,17 +233,13 @@ const App = () => {
                     </Button>
                   </FormControl>
                 </Box>
-
-                <audio ref={hoverAudioRef}>
-                  <source src={hoverSound} type="audio/mp3" />
-                </audio>
               </form>
             </>
           ) : (
             <Box margin={10}>
               <CardList cardList={data} />
-              <Bgm />
-              {genAudio && <GenButton />}
+              {/* <Bgm /> */}
+              {/* {genAudio && <GenButton />} */}
             </Box>
           )}
         </>
@@ -253,7 +250,3 @@ const App = () => {
 
 export default App;
 
-// <Box margin={10}>
-//   <CardList cardList={data} />
-//   <Bgm/>
-// </Box>

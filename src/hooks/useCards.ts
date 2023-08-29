@@ -3,6 +3,7 @@ import apiClient from "../services/apiClient";
 import CardInfoProp from "../models/CardInfoProp";
 import categoryApi from "../services/categoryApi";
 import CategoryInfoProps from "../models/CategoryInfoProps";
+import useAudio from "./useAudio";
 
 interface Response {
   results: CardInfoProp[];
@@ -24,6 +25,9 @@ const useCards = () => {
 
   const catergoryRef = useRef<HTMLSelectElement>(null);
   const numberOfCardsRef = useRef<HTMLInputElement>(null);
+
+  const { handleOptionHover, handleOptionLeave, handlePlayBgm, handlePlayGen, handleStopAffect} = useAudio();
+
   
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -47,6 +51,9 @@ const useCards = () => {
         // console.log(responseData);
         setData(responseData.results);
         console.log(responseData.results);
+        handleStopAffect()
+        handlePlayBgm()
+        handlePlayGen()
       })
       .catch((error) => {
         setError(error.message);
