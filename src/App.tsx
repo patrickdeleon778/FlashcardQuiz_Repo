@@ -17,8 +17,8 @@ import {
 } from "@chakra-ui/react";
 import CardList from "./components/CardList";
 import "./App.css";
-// import Bgm from "../src/components/audioComponents/Bgm"; // THIS IS FOR THE PC
-import Bgm from "./components/audioComponents/BGM"; // THIS IS FOR THE MAC
+import Bgm from "../src/components/audioComponents/Bgm"; // THIS IS FOR THE PC
+// import Bgm from "./components/audioComponents/BGM"; // THIS IS FOR THE MAC
 import GenButton from "./components/audioComponents/GenButton";
 import YourAffection from "./components/audioComponents/YourAffection";
 
@@ -49,7 +49,8 @@ const App = () => {
 
   const hoverAudioRef = useRef<HTMLAudioElement | null>(null);
 
-  const [loadButtonClassName, setloadButtonClassName] = useState("p4Font slideUp");
+  const [loadButtonClassName, setloadButtonClassName] =
+    useState("p4Font slideUp");
   const [playButtonClassName, setPlayButtonClassName] = useState("bounceIn");
 
   useEffect(() => {
@@ -59,7 +60,7 @@ const App = () => {
 
     const timeoutPlay = setTimeout(() => {
       setPlayButtonClassName("pulse");
-    }, 1400)
+    }, 1400);
 
     return () => {
       clearTimeout(timeoutLoad);
@@ -152,7 +153,13 @@ const App = () => {
                       cursor="pointer"
                     >
                       {categories.map((category) => (
-                        <option value={category.id} key={category.id}>
+                        <option
+                          value={category.id}
+                          key={category.id}
+                          style={{
+                            backgroundColor: "#36311e", 
+                          }}
+                        >
                           {category.name}
                         </option>
                       ))}
