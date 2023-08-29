@@ -23,6 +23,7 @@ const Card = ({ singleCard }: CardProp) => {
       <GridItem
         className={`mainCard bounceIn ${!flip ? "" : "backCard"}`}
         onClick={() => setFlip(!flip)}
+        cursor='pointer'
         w="355px"
         h="250px"
       >

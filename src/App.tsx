@@ -17,8 +17,8 @@ import {
 } from "@chakra-ui/react";
 import CardList from "./components/CardList";
 import "./App.css";
-import Bgm from "../src/components/audioComponents/Bgm"; // THIS IS FOR THE PC
-// import Bgm from "./components/audioComponents/BGM"; // THIS IS FOR THE MAC
+// import Bgm from "../src/components/audioComponents/Bgm"; // THIS IS FOR THE PC
+import Bgm from "./components/audioComponents/BGM"; // THIS IS FOR THE MAC
 import GenButton from "./components/audioComponents/GenButton";
 import YourAffection from "./components/audioComponents/YourAffection";
 
@@ -159,6 +159,8 @@ const App = () => {
                           style={{
                             backgroundColor: "#36311e", 
                           }}
+                          onMouseEnter={handleOptionHover}
+                          onMouseLeave={handleOptionLeave}
                         >
                           {category.name}
                         </option>
