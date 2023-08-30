@@ -28,7 +28,7 @@ const Card = ({ singleCard }: CardProp) => {
   return (
     <>
       <GridItem
-        className={`mainCard rotateIn ${!flip ? "" : "backCard"}`}
+        className={`mainCard zoomer ${!flip ? "" : "backCard"}`}
         onClick={() => disabledButt && setFlip(!flip)}
         cursor={disabledButt ? 'pointer' : 'not-allowed'}
         w="355px"
