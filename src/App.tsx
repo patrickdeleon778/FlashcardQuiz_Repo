@@ -23,6 +23,8 @@ import "./App.css";
 // import YourAffection from "./components/audioComponents/YourAffection";
 
 import useAudio from "./hooks/useAudio";
+import YourAffection from "./components/audioComponents/YourAffection";
+import Bgm from "./components/audioComponents/BGM";
 
 const App = () => {
   const {
@@ -40,14 +42,13 @@ const App = () => {
     setYourAffection,
   } = useCards();
 
-  const { handleOptionHover, handleOptionLeave, handlePlayBgm, handlePlayAffect} = useAudio();
+  const { handleOptionHover, handleOptionLeave} = useAudio();
 
   console.log("data from app.tsx:", data);
 
   const handlePlay = () => {
     setPlay(true);
-    // setYourAffection(true);
-    handlePlayAffect();
+    setYourAffection(true);
   };
 
   const [loadButtonClassName, setloadButtonClassName] =
@@ -124,7 +125,7 @@ const App = () => {
         <>
           {!selectCat ? (
             <>
-              {/* {yourAffection && <YourAffection />} */}
+              {yourAffection && <YourAffection />}
               <form onSubmit={handleSubmit} className="formBox">
                 <Box className="formBackground p4Font slideRight" mb={20}>
                   <FormControl flex={1} position="relative">
@@ -238,7 +239,7 @@ const App = () => {
           ) : (
             <Box margin={10}>
               <CardList cardList={data} />
-              {/* <Bgm /> */}
+              <Bgm />
               {/* {genAudio && <GenButton />} */}
             </Box>
           )}

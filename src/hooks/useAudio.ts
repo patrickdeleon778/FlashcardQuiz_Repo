@@ -25,12 +25,12 @@ const useAudio = () => {
    //========= HOVER AUDIO ============// 
 //////////////////////////////////////////////////
    //========= BGM AUDIO ============// 
-  const handlePlayBgm = () => {
-    startBgm();
-  }
-  const handleStopBgm = () => {
-    stopBgm();
-  }
+//   const handlePlayBgm = () => {
+//     startBgm();
+//   }
+//   const handleStopBgm = () => {
+//     stopBgm();
+//   }
   //========= BGM AUDIO ============//
 //////////////////////////////////////////////////
   //========= GEN AUDIO ============// 
@@ -42,17 +42,17 @@ const useAudio = () => {
   }
   //========= GEN AUDIO ============//
  ////////////////////////////////////////////////
- const handlePlayAffect = () => {
-  startAffect();
-}
-const handleStopAffect = () => {
-  pauseAffect();
-  stopAffect();
-}
+//  const handlePlayAffect = () => {
+//   startAffect();
+// }
+// const handleStopAffect = () => {
+//   pauseAffect();
+//   stopAffect();
+// }
 //========= GEN AUDIO ============//
   
 
-  return {handleOptionHover, handleOptionLeave, handlePlayBgm, handleStopBgm, handlePlayGen, handleStopGen, handlePlayAffect, handleStopAffect}
+  return {handleOptionHover, handleOptionLeave, handlePlayGen, handleStopGen}
 }
 
 export default useAudio;

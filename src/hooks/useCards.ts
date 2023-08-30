@@ -26,7 +26,7 @@ const useCards = () => {
   const catergoryRef = useRef<HTMLSelectElement>(null);
   const numberOfCardsRef = useRef<HTMLInputElement>(null);
 
-  const { handleOptionHover, handleOptionLeave, handlePlayBgm, handlePlayGen, handleStopAffect} = useAudio();
+  const {handlePlayGen} = useAudio();
 
   
 
@@ -51,8 +51,6 @@ const useCards = () => {
         // console.log(responseData);
         setData(responseData.results);
         console.log(responseData.results);
-        handleStopAffect()
-        handlePlayBgm()
         handlePlayGen()
       })
       .catch((error) => {
@@ -60,7 +58,7 @@ const useCards = () => {
       });
 
       setSelectCat(true);
-      setGenAudio(true);
+      // setGenAudio(true);
   }
 
   // const fetchData = () => {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useCards from "../hooks/useCards";
 import { Box, GridItem, Text } from "@chakra-ui/react";
 import CardInfoProp from "../models/CardInfoProp";
@@ -11,6 +11,7 @@ const Card = ({ singleCard }: CardProp) => {
   const { flip, setFlip } = useCards();
   const answer = singleCard.correct_answer;
   const choices = [...singleCard.incorrect_answers, answer];
+  const [disabledButt, setDisabledButt] = useState(false);
 
   function decodeString(str: string) {
     const textArea = document.createElement("textarea");
@@ -18,12 +19,18 @@ const Card = ({ singleCard }: CardProp) => {
     return textArea.value;
   }
 
+  useEffect(() => {
+    setTimeout(() => {
+      setDisabledButt(true);
+    }, 3000);
+  }, [])
+
   return (
     <>
       <GridItem
-        className={`mainCard bounceIn ${!flip ? "" : "backCard"}`}
-        onClick={() => setFlip(!flip)}
-        cursor='pointer'
+        className={`mainCard rotateIn ${!flip ? "" : "backCard"}`}
+        onClick={() => disabledButt && setFlip(!flip)}
+        cursor={disabledButt ? 'pointer' : 'not-allowed'}
         w="355px"
         h="250px"
       >
