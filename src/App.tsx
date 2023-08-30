@@ -17,14 +17,12 @@ import {
 } from "@chakra-ui/react";
 import CardList from "./components/CardList";
 import "./App.css";
-// import Bgm from "../src/components/audioComponents/Bgm"; // THIS IS FOR THE PC
+import Bgm from "../src/components/audioComponents/BGM"; // THIS IS FOR THE PC
 // import Bgm from "./components/audioComponents/BGM"; // THIS IS FOR THE MAC
-// import GenButton from "./components/audioComponents/GenButton";
-// import YourAffection from "./components/audioComponents/YourAffection";
 
 import useAudio from "./hooks/useAudio";
 import YourAffection from "./components/audioComponents/YourAffection";
-import Bgm from "./components/audioComponents/BGM";
+// import Bgm from "./components/audioComponents/BGM";
 
 const App = () => {
   const {

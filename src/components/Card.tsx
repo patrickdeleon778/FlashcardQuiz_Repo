@@ -18,6 +18,23 @@ const Card = ({ singleCard }: CardProp) => {
     textArea.innerHTML = str;
     return textArea.value;
   }
+  
+  console.log('THESE ARE THE CHOICES: ', choices);
+
+  function shuffleChoices(array: any) {
+    const shuffledArray = [...array]; 
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = shuffledArray[i];
+      shuffledArray[i] = shuffledArray[j];
+      shuffledArray[j] = temp;
+    }
+    return shuffledArray; 
+  }
+  
+  const shuffledChoices = shuffleChoices(choices);
+
+  console.log('THESE ARE THE RANDOM CHOICES: ', shuffledChoices);
 
   useEffect(() => {
     setTimeout(() => {
@@ -52,7 +69,7 @@ const Card = ({ singleCard }: CardProp) => {
                 {decodeString(singleCard.question)}
               </Text>
               <Box pl={7}>
-                {choices.map((choice) => (
+                {shuffledChoices.map((choice) => (
                   <Box key={choice} mb={"0.5"}>
                     <Text
                       noOfLines={2}
