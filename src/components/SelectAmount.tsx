@@ -20,7 +20,6 @@ interface CardListProps {
   selectList: CardInfoProp[]
 }
 
-
 const SelectAmount = (  ) => {
   const { categories, catergoryRef, numberOfCardsRef, handleSubmit, data,  } = useCards();
 

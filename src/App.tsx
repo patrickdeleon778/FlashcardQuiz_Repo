@@ -40,7 +40,7 @@ const App = () => {
     setYourAffection,
   } = useCards();
 
-  const { handleOptionHover, handleOptionLeave} = useAudio();
+  const { handleOptionHover, handleOptionLeave, handlePlayGen} = useAudio();
 
   console.log("data from app.tsx:", data);
 
@@ -62,24 +62,20 @@ const App = () => {
       setPlayButtonClassName("pulse");
     }, 1400);
 
+    document.addEventListener('keydown', keyPressed, true)
+
     return () => {
       clearTimeout(timeoutLoad);
       clearTimeout(timeoutPlay);
     };
   }, []);
+  
+  const keyPressed = (e:Event) => {
+    e && setPlay(true);
+    setYourAffection(true);
+    handlePlayGen()
+  }
 
-  // const handleOptionHover = () => {
-  //   if (hoverAudioRef.current) {
-  //     hoverAudioRef.current.play();
-  //   }
-  // };
-
-  // const handleOptionLeave = () => {
-  //   if (hoverAudioRef.current) {
-  //     hoverAudioRef.current.pause();
-  //     hoverAudioRef.current.currentTime = 0;
-  //   }
-  // };
 
   return (
     <>
@@ -108,7 +104,6 @@ const App = () => {
               _hover={{}}
               _active={{}}
               onMouseEnter={handleOptionHover}
-              onMouseLeave={handleOptionLeave}
             >
               <Image
                 src="/src/assets/images/actuallydoneButton.png"
@@ -149,7 +144,7 @@ const App = () => {
                       mb={5}
                       fontSize={25}
                       onMouseEnter={handleOptionHover}
-                      onMouseLeave={handleOptionLeave}
+                      onClick={handlePlayGen}
                       cursor="pointer"
                     >
                       {categories.map((category) => (
@@ -160,7 +155,6 @@ const App = () => {
                             backgroundColor: "#36311e",
                           }}
                           onMouseEnter={handleOptionHover}
-                          onMouseLeave={handleOptionLeave}
                         >
                           {category.name}
                         </option>
@@ -192,7 +186,7 @@ const App = () => {
                         mb={5}
                         fontSize={25}
                         onMouseEnter={handleOptionHover}
-                        onMouseLeave={handleOptionLeave}
+                        onClick={handlePlayGen}
                       />
                       <NumberInputStepper>
                         <NumberIncrementStepper
@@ -200,14 +194,14 @@ const App = () => {
                           color={"white"}
                           mb={5}
                           onMouseEnter={handleOptionHover}
-                          onMouseLeave={handleOptionLeave}
+                          onClick={handlePlayGen}
                         />
                         <NumberDecrementStepper
                           borderColor="#36311e"
                           color={"white"}
                           mb={5}
                           onMouseEnter={handleOptionHover}
-                          onMouseLeave={handleOptionLeave}
+                          onClick={handlePlayGen}
                         />
                       </NumberInputStepper>
                     </NumberInput>
@@ -218,7 +212,6 @@ const App = () => {
                   className={loadButtonClassName}
                   mt={8}
                   onMouseEnter={handleOptionHover}
-                  onMouseLeave={handleOptionLeave}
                 >
                   <FormControl>
                     <Button

@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import useCards from "../hooks/useCards";
 import { Box, GridItem, Text } from "@chakra-ui/react";
 import CardInfoProp from "../models/CardInfoProp";
+import useAudio from "../hooks/useAudio";
 
 interface CardProp {
   singleCard: CardInfoProp;
 }
 
 const Card = ({ singleCard }: CardProp) => {
+
   const { flip, setFlip } = useCards();
   const answer = singleCard.correct_answer;
   const choices = [...singleCard.incorrect_answers, answer];
@@ -39,14 +41,20 @@ const Card = ({ singleCard }: CardProp) => {
   useEffect(() => {
     setTimeout(() => {
       setDisabledButt(true);
-    }, 3000);
+    }, 1000);
   }, [])
 
+  const { handleCardFlip, startFlip, handleDontFlip} = useAudio();
+  
   return (
     <>
       <GridItem
         className={`mainCard zoomer ${!flip ? "" : "backCard"}`}
-        onClick={() => disabledButt && setFlip(!flip)}
+        onClick={() => {
+          disabledButt && setFlip(!flip);
+          !disabledButt ? handleDontFlip(): handleCardFlip();
+          
+        }}
         cursor={disabledButt ? 'pointer' : 'not-allowed'}
         w="355px"
         h="250px"
