@@ -136,16 +136,17 @@ const App = () => {
                     </FormLabel>
                     <Select
                       id="category"
+                      className="formSelect"
                       ref={catergoryRef}
                       variant="unstyled"
                       color="white"
-                      width="93%"
+                      width={{ base: '50%', sm: '93%', md: '88%', lg: '93%', xl: '93%' }}
                       ml={20}
                       mb={5}
                       fontSize={25}
                       onMouseEnter={handleOptionHover}
                       onClick={handlePlayGen}
-                      cursor="pointer"
+                      
                     >
                       {categories.map((category) => (
                         <option
@@ -181,10 +182,11 @@ const App = () => {
                         ref={numberOfCardsRef}
                         color={"white"}
                         borderColor="#36311e"
-                        width="90%"
+                        width="87%"
                         ml={20}
                         mb={5}
                         fontSize={25}
+                        p={0}
                         onMouseEnter={handleOptionHover}
                         onClick={handlePlayGen}
                       />
