@@ -57,19 +57,27 @@
     align-items: center;
     padding: 20px; 
 }
-/* 
-.formSelect {
-    width: 19%;
-} */
 
-@media screen and (min-width: 1024px) and (max-width: 1280px){
+
+@media screen and (min-width: 992px) and (max-width: 1280px){
     .formBackground {
-        width: 1024px;
+        width: 992px;
     }
 }
-@media screen and (min-width: 640px) and (max-width: 1024px){
+@media screen and (min-width: 768px) and (max-width: 992px){
     .formBackground {
-        width: 640px;
+        width: 768px;
+    }
+}
+@media screen and (min-width: 480px) and (max-width: 768px){
+    .formBackground {
+        width: 480px;
+    }
+}
+@media screen and (min-width: 0px) and (max-width: 480px){
+    .formBackground {
+        background-image: url('/src/assets/images/persona\ 4\ tv.png');
+        width: 300px;
     }
 }
 

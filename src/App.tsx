@@ -140,7 +140,7 @@ const App = () => {
                       ref={catergoryRef}
                       variant="unstyled"
                       color="white"
-                      width={{ base: '50%', sm: '93%', md: '88%', lg: '93%', xl: '93%' }}
+                      width={{ base: '78%', sm: '85%', md: '90%', lg: '93%', xl: '93%' }}
                       ml={20}
                       mb={5}
                       fontSize={25}
@@ -217,8 +217,9 @@ const App = () => {
                 >
                   <FormControl>
                     <Button
+                      className="fontButton"
                       type="submit"
-                      fontSize={50}
+                      fontSize={{ base: 25, sm: 25, md: 30, lg: 40, xl: 50 }}
                       variant="ghost"
                       _hover={{}}
                       _active={{}}
