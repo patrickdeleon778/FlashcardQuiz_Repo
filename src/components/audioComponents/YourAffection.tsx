@@ -1,10 +1,11 @@
 import React from 'react'
+import Your from '../audioComponents/your affection.mp3'
 
 const YourAffection = () => {
   return (
     <>
       <audio autoPlay loop>
-        <source src="/src/assets/audio/your affection.mp3" type="audio/mpeg" />
+        <source src={Your} type="audio/mpeg" />
       </audio>
     </>
   )

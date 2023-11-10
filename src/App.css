@@ -1,3 +1,4 @@
+
 .background {
     background-image: url('/src/assets/images/persona4-background.jpeg');
     background-repeat: repeat;
@@ -10,11 +11,10 @@
 }
 
 .mainCard {
-    background-image: url(/src/assets/images/persona\ 4\ tv.png);
+    background-image: url('/src/assets/images/persona4tv.png');
     background-size: 355px 250px;;
     background-repeat: no-repeat;
     background-position: center center;
-    /* border-radius: 10px; */
     perspective: 1000px;
     transition: transform 0.1s;
     transform-style: preserve-3d;
@@ -47,7 +47,7 @@
 }
 
 .formBackground {
-    background-image: url('/src/assets/images/dialogue\ box.png');
+    background-image: url('/src/assets/images/dialoguebox.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center; 
@@ -76,7 +76,7 @@
 }
 @media screen and (min-width: 0px) and (max-width: 480px){
     .formBackground {
-        background-image: url('/src/assets/images/persona\ 4\ tv.png');
+        background-image: url('/src/assets/images/persona4tv.png');
         width: 300px;
     }
 }

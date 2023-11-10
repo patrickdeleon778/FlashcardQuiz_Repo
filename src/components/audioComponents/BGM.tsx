@@ -1,10 +1,11 @@
 import React from 'react'
+import Heartbreak from '../audioComponents/Persona 4 Heartbeat Heartbreak.mp3'
 
 const Bgm = () => {
   return (
     <>
       <audio autoPlay loop>
-        <source src="/src/assets/audio/Persona 4 Heartbeat Heartbreak.mp3" type="audio/mpeg" />
+        <source src={Heartbreak} type="audio/mpeg" />
       </audio>
     </>
   )

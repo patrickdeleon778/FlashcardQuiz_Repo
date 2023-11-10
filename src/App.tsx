@@ -23,6 +23,8 @@ import Bgm from "../src/components/audioComponents/BGM"; // THIS IS FOR THE PC
 import useAudio from "./hooks/useAudio";
 import YourAffection from "./components/audioComponents/YourAffection";
 // import Bgm from "./components/audioComponents/BGM";
+import P4Logo from "../src/assets/images/Persona_4_Golden_logo.webp";
+import PlayButton from "../src/assets/images/actuallydoneButton.png";
 
 const App = () => {
   const {
@@ -83,7 +85,7 @@ const App = () => {
         <>
           <Box className="bounceIn" display="flex" justifyContent="center">
             <Image
-              src="/src/assets/images/persona4logo.gif"
+              src={P4Logo}
               mt={1}
               maxWidth={{ base: "100%", sm: "75%", md: "50%" }}
               objectFit="cover"
@@ -106,7 +108,7 @@ const App = () => {
               onMouseEnter={handleOptionHover}
             >
               <Image
-                src="/src/assets/images/actuallydoneButton.png"
+                src={PlayButton}
                 className={playButtonClassName}
                 _hover={{ transform: "translateY(-2px)" }}
                 style={{ width: "100%", height: "100%" }}
